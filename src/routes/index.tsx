@@ -61,7 +61,7 @@ const testimonials = [
   { name: "Thandi K.", text: "Honestly the most calming dental experience I've ever had. Modern, clean, and they take the time to explain everything.", role: "Cosmetic patient" },
 ];
 
-function Index() {
+export function Index() {
   return (
     <div id="top" className="bg-background text-foreground overflow-x-hidden">
       <Nav />
