@@ -38,13 +38,13 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { icon: Stethoscope, title: "General Dentistry", desc: "Comprehensive check-ups, cleanings and preventative care for the whole family." },
-  { icon: Sparkles, title: "Cosmetic Dentistry", desc: "Subtle, natural-looking enhancements that bring out your best smile." },
-  { icon: Smile, title: "Teeth Whitening", desc: "Safe, professional whitening for a brighter, more confident smile." },
-  { icon: Crown, title: "Crowns & Bridges", desc: "Crafted on-site in our dental lab for a perfect, lasting fit." },
-  { icon: Baby, title: "Kids Dentistry", desc: "Gentle, fun and reassuring visits — building healthy habits for life." },
-  { icon: Syringe, title: "Dentures", desc: "Custom-made, comfortable dentures designed in our own lab." },
-  { icon: Siren, title: "Emergency Care", desc: "Same-day appointments when you need us most. We're here to help." },
+  { icon: Stethoscope, title: "General Dentistry", desc: "Comprehensive check-ups, cleanings and preventative care for the whole family.", image: svcGeneral },
+  { icon: Sparkles, title: "Cosmetic Dentistry", desc: "Subtle, natural-looking enhancements that bring out your best smile.", image: svcCosmetic },
+  { icon: Smile, title: "Teeth Whitening", desc: "Safe, professional whitening for a brighter, more confident smile.", image: svcWhitening },
+  { icon: Crown, title: "Crowns & Bridges", desc: "Crafted on-site in our dental lab for a perfect, lasting fit.", image: svcCrowns },
+  { icon: Baby, title: "Kids Dentistry", desc: "Gentle, fun and reassuring visits — building healthy habits for life.", image: svcKids },
+  { icon: Syringe, title: "Dentures", desc: "Custom-made, comfortable dentures designed in our own lab.", image: svcDentures },
+  { icon: Siren, title: "Emergency Care", desc: "Same-day appointments when you need us most. We're here to help.", image: svcEmergency },
 ];
 
 const trust = [
