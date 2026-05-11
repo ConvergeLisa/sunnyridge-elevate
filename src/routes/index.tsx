@@ -10,7 +10,7 @@ import smile1 from "@/assets/smile-1.jpg";
 import smile2 from "@/assets/smile-2.jpg";
 import smile3 from "@/assets/smile-3.jpg";
 import smile4 from "@/assets/smile-4.jpg";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-icon.svg";
 import svcGeneral from "@/assets/svc-general.jpg";
 import svcCosmetic from "@/assets/svc-cosmetic.jpg";
 import svcWhitening from "@/assets/svc-whitening.jpg";
