@@ -15,25 +15,13 @@ import { promises as fs } from "node:fs";
 import { existsSync } from "node:fs";
 
 const root = process.cwd();
-const vercelRoot = path.join(root, "vercel");
 const outDir = path.join(root, "vercel-dist");
 const publicDir = path.join(root, "public");
-
-async function copyDir(src, dest) {
-  if (!existsSync(src)) return;
-  await fs.mkdir(dest, { recursive: true });
-  for (const entry of await fs.readdir(src, { withFileTypes: true })) {
-    const s = path.join(src, entry.name);
-    const d = path.join(dest, entry.name);
-    if (entry.isDirectory()) await copyDir(s, d);
-    else await fs.copyFile(s, d);
-  }
-}
 
 await fs.rm(outDir, { recursive: true, force: true });
 
 await build({
-  root: vercelRoot,
+  root,
   publicDir,
   resolve: {
     alias: {
@@ -45,7 +33,17 @@ await build({
     outDir,
     emptyOutDir: true,
     sourcemap: false,
+    rollupOptions: {
+      input: path.join(root, "vercel", "index.html"),
+    },
   },
 });
+
+// Move vercel/index.html → root index.html in output (Vite preserves the input's relative path).
+const nestedHtml = path.join(outDir, "vercel", "index.html");
+if (existsSync(nestedHtml)) {
+  await fs.rename(nestedHtml, path.join(outDir, "index.html"));
+  await fs.rm(path.join(outDir, "vercel"), { recursive: true, force: true });
+}
 
 console.log(`\n✓ Vercel SPA build ready at ${outDir}`);
