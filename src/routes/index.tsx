@@ -10,6 +10,14 @@ import smile1 from "@/assets/smile-1.jpg";
 import smile2 from "@/assets/smile-2.jpg";
 import smile3 from "@/assets/smile-3.jpg";
 import smile4 from "@/assets/smile-4.jpg";
+import logo from "@/assets/logo.png";
+import svcGeneral from "@/assets/svc-general.jpg";
+import svcCosmetic from "@/assets/svc-cosmetic.jpg";
+import svcWhitening from "@/assets/svc-whitening.jpg";
+import svcCrowns from "@/assets/svc-crowns.jpg";
+import svcKids from "@/assets/svc-kids.jpg";
+import svcDentures from "@/assets/svc-dentures.jpg";
+import svcEmergency from "@/assets/svc-emergency.jpg";
 import { Nav } from "@/components/site/Nav";
 import { StickyMobileBar } from "@/components/site/StickyMobileBar";
 
