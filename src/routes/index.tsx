@@ -182,20 +182,31 @@ function Index() {
           </div>
 
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map((s, i) => (
+            {services.map((s) => (
               <article
                 key={s.title}
-                className={`group relative rounded-3xl border border-border bg-card p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant hover:border-primary/30 ${
-                  i === 0 ? "lg:row-span-1" : ""
-                }`}
+                className="group relative rounded-3xl border border-border bg-card overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant hover:border-primary/30"
               >
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary mb-5 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <s.icon className="h-5 w-5" />
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    width={800}
+                    height={640}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 grid h-11 w-11 place-items-center rounded-2xl bg-card/90 backdrop-blur text-primary shadow-soft">
+                    <s.icon className="h-5 w-5" />
+                  </div>
                 </div>
-                <h3 className="font-display text-2xl">{s.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                <div className="mt-6 flex items-center gap-1.5 text-sm text-primary opacity-0 group-hover:opacity-100 transition">
-                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                <div className="p-7">
+                  <h3 className="font-display text-2xl">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  <div className="mt-5 flex items-center gap-1.5 text-sm text-primary opacity-0 group-hover:opacity-100 transition">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </article>
             ))}
