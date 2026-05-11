@@ -1,7 +1,8 @@
 {
+  "framework": null,
   "buildCommand": "node scripts/build-vercel.mjs",
   "installCommand": "npm install --no-audit --no-fund",
-  "outputDirectory": "vercel-dist/client",
+  "outputDirectory": "vercel-dist",
   "rewrites": [
     {
       "source": "/(.*)",

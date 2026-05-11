@@ -21,6 +21,8 @@ const publicDir = path.join(root, "public");
 await fs.rm(outDir, { recursive: true, force: true });
 
 await build({
+  configFile: false,
+  appType: "spa",
   root,
   publicDir,
   resolve: {
@@ -44,6 +46,19 @@ const nestedHtml = path.join(outDir, "vercel", "index.html");
 if (existsSync(nestedHtml)) {
   await fs.rename(nestedHtml, path.join(outDir, "index.html"));
   await fs.rm(path.join(outDir, "vercel"), { recursive: true, force: true });
+}
+
+// Some environments still emit into outDir/client; flatten it so Vercel always gets
+// vercel-dist/index.html and vercel-dist/assets.
+const nestedClientDir = path.join(outDir, "client");
+if (existsSync(nestedClientDir)) {
+  const clientEntries = await fs.readdir(nestedClientDir);
+  await Promise.all(
+    clientEntries.map((entry) =>
+      fs.rename(path.join(nestedClientDir, entry), path.join(outDir, entry)),
+    ),
+  );
+  await fs.rm(nestedClientDir, { recursive: true, force: true });
 }
 
 console.log(`\n✓ Vercel SPA build ready at ${outDir}`);
