@@ -148,7 +148,7 @@ function Index() {
             {trust.map((t) => (
               <div key={t.label} className="flex items-start gap-3">
                 <div className="grid h-10 w-10 place-items-center rounded-xl bg-card border border-border text-primary shrink-0">
-                  <t.icon className="h-4.5 w-4.5" />
+                  <t.icon className="h-4 w-4" />
                 </div>
                 <div>
                   <div className="text-sm font-medium leading-tight">{t.label}</div>
