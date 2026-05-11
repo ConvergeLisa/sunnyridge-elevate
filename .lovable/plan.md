@@ -1,35 +1,31 @@
-## Palette refinement — warmer, more human
+## Goals
+1. Fix broken logo on mobile and switch to the new SVG icon.
+2. Show logo + "Sunnyridge Dental / Dr S Lutchman & Associates" text on mobile too (same as desktop).
+3. Add a working mobile menu (hamburger) so nav links are reachable on small screens.
+4. Use the same icon as the site favicon.
 
-Scope: tokens in `src/styles.css` only. No layout, no component, no copy changes. All semantic tokens stay the same names, so every existing `bg-primary`, `text-gold`, `bg-cream`, etc. picks up the new tones automatically.
+## Changes
 
-### New palette direction
+**Assets**
+- Copy `user-uploads://Untitled_design.svg` → `src/assets/logo-icon.svg` (used in Nav + footer).
+- Copy same file → `public/favicon.svg` for the browser tab icon.
 
-| Token | Now (cool) | New (warm) | Used for |
-|---|---|---|---|
-| `--primary` | muted deep blue | warm charcoal with a faint teal lean | Nav buttons, headlines accent, testimonial section bg |
-| `--foreground` | cool near-black | warm off-black (slight brown undertone) | Body text |
-| `--background` | very pale cream | slightly deeper warm off-white | Page background |
-| `--cream` | light cream | soft sand / oat | Section backgrounds (about, trust strip, footer) |
-| `--accent` | cool pale blue | warm taupe / soft clay | Service icon chips, contact cards |
-| `--gold` | warm gold | slightly more muted, honeyed gold | Stars, hairline accents, eyebrow labels |
-| `--muted-foreground` | cool grey | warm stone grey | Secondary text |
-| `--border` | cool light | warm sand border | Cards, dividers |
+**`src/routes/__root.tsx`**
+- Add `<link rel="icon" type="image/svg+xml" href="/favicon.svg">` in the head meta/links so the favicon updates.
 
-### Atmosphere goals
-- Backgrounds read as "morning light on warm plaster," not "white paper."
-- Dark sections (testimonials) feel like warm clay/charcoal — inviting, not corporate.
-- Gold becomes a quiet honey tone rather than a bright metallic — used as a whisper, not a shout.
-- Every neutral pulled toward the warm side of the oklch hue wheel (hue ~60–80 for neutrals, ~180–200 for the deep tone instead of 235).
+**`src/components/site/Nav.tsx`**
+- Replace `logo.png` import with the new `logo-icon.svg`.
+- Remove `hidden sm:flex` from the brand text block so the "Sunnyridge Dental / DR S LUTCHMAN & ASSOCIATES" lockup shows on mobile too (slightly smaller on xs).
+- Tighten logo size on mobile (e.g. `h-9 sm:h-10`) so the lockup fits at 360–400px widths.
+- Add a mobile menu:
+  - Hamburger button visible `md:hidden` on the right (replaces/sits next to the Book CTA — Book CTA stays hidden on xs since the sticky bottom bar already provides Call/WhatsApp/Book).
+  - Clicking toggles an animated dropdown panel under the pill (glass + shadow) listing: Services, About, Smiles, Reviews, Contact, plus a full-width "Book Appointment" button.
+  - Closes on link click and on `Esc`.
+  - Uses lucide `Menu` / `X` icons; no new dependencies.
+- Keep existing scrolled-state styling.
 
-### Implementation
-1. Update `:root` token values in `src/styles.css` (oklch only).
-2. Lightly retune the hero radial-gradient backdrop in `src/routes/index.tsx` so the warm/cool blobs become two warm tones (sand + soft clay) — single inline style, no structural change.
-3. Visually QA at the current viewport (948px) and on mobile to confirm contrast on:
-   - Primary buttons
-   - Dark testimonial section
-   - Glass nav over cream background
-   - Footer + trust strip on the new sand background
+**`src/routes/index.tsx` (footer only)**
+- Swap footer logo import to the new SVG so header + footer match.
 
-### Out of scope
-- No layout, spacing, typography, copy, image, or component changes.
-- No new sections or tokens beyond what's listed.
+## Out of scope
+No layout, color, copy, or section changes elsewhere. Sticky mobile CTA bar stays as-is.
