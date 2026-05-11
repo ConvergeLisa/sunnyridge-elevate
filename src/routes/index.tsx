@@ -65,7 +65,7 @@ function Index() {
           className="absolute inset-0 -z-10 opacity-60"
           style={{
             backgroundImage:
-              "radial-gradient(60% 50% at 80% 0%, oklch(0.92 0.04 220 / 0.6), transparent 70%), radial-gradient(50% 40% at 0% 100%, oklch(0.94 0.06 75 / 0.5), transparent 70%)",
+              "radial-gradient(60% 50% at 80% 0%, oklch(0.92 0.04 65 / 0.7), transparent 70%), radial-gradient(50% 40% at 0% 100%, oklch(0.9 0.05 55 / 0.55), transparent 70%)",
           }}
         />
         <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-12 gap-10 md:gap-12 items-center">
