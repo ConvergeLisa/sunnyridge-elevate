@@ -10,6 +10,14 @@ import smile1 from "@/assets/smile-1.jpg";
 import smile2 from "@/assets/smile-2.jpg";
 import smile3 from "@/assets/smile-3.jpg";
 import smile4 from "@/assets/smile-4.jpg";
+import logo from "@/assets/logo.png";
+import svcGeneral from "@/assets/svc-general.jpg";
+import svcCosmetic from "@/assets/svc-cosmetic.jpg";
+import svcWhitening from "@/assets/svc-whitening.jpg";
+import svcCrowns from "@/assets/svc-crowns.jpg";
+import svcKids from "@/assets/svc-kids.jpg";
+import svcDentures from "@/assets/svc-dentures.jpg";
+import svcEmergency from "@/assets/svc-emergency.jpg";
 import { Nav } from "@/components/site/Nav";
 import { StickyMobileBar } from "@/components/site/StickyMobileBar";
 
@@ -30,13 +38,13 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { icon: Stethoscope, title: "General Dentistry", desc: "Comprehensive check-ups, cleanings and preventative care for the whole family." },
-  { icon: Sparkles, title: "Cosmetic Dentistry", desc: "Subtle, natural-looking enhancements that bring out your best smile." },
-  { icon: Smile, title: "Teeth Whitening", desc: "Safe, professional whitening for a brighter, more confident smile." },
-  { icon: Crown, title: "Crowns & Bridges", desc: "Crafted on-site in our dental lab for a perfect, lasting fit." },
-  { icon: Baby, title: "Kids Dentistry", desc: "Gentle, fun and reassuring visits — building healthy habits for life." },
-  { icon: Syringe, title: "Dentures", desc: "Custom-made, comfortable dentures designed in our own lab." },
-  { icon: Siren, title: "Emergency Care", desc: "Same-day appointments when you need us most. We're here to help." },
+  { icon: Stethoscope, title: "General Dentistry", desc: "Comprehensive check-ups, cleanings and preventative care for the whole family.", image: svcGeneral },
+  { icon: Sparkles, title: "Cosmetic Dentistry", desc: "Subtle, natural-looking enhancements that bring out your best smile.", image: svcCosmetic },
+  { icon: Smile, title: "Teeth Whitening", desc: "Safe, professional whitening for a brighter, more confident smile.", image: svcWhitening },
+  { icon: Crown, title: "Crowns & Bridges", desc: "Crafted on-site in our dental lab for a perfect, lasting fit.", image: svcCrowns },
+  { icon: Baby, title: "Kids Dentistry", desc: "Gentle, fun and reassuring visits — building healthy habits for life.", image: svcKids },
+  { icon: Syringe, title: "Dentures", desc: "Custom-made, comfortable dentures designed in our own lab.", image: svcDentures },
+  { icon: Siren, title: "Emergency Care", desc: "Same-day appointments when you need us most. We're here to help.", image: svcEmergency },
 ];
 
 const trust = [
@@ -174,20 +182,31 @@ function Index() {
           </div>
 
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map((s, i) => (
+            {services.map((s) => (
               <article
                 key={s.title}
-                className={`group relative rounded-3xl border border-border bg-card p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant hover:border-primary/30 ${
-                  i === 0 ? "lg:row-span-1" : ""
-                }`}
+                className="group relative rounded-3xl border border-border bg-card overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant hover:border-primary/30"
               >
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-primary mb-5 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <s.icon className="h-5 w-5" />
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    width={800}
+                    height={640}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 grid h-11 w-11 place-items-center rounded-2xl bg-card/90 backdrop-blur text-primary shadow-soft">
+                    <s.icon className="h-5 w-5" />
+                  </div>
                 </div>
-                <h3 className="font-display text-2xl">{s.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                <div className="mt-6 flex items-center gap-1.5 text-sm text-primary opacity-0 group-hover:opacity-100 transition">
-                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                <div className="p-7">
+                  <h3 className="font-display text-2xl">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  <div className="mt-5 flex items-center gap-1.5 text-sm text-primary opacity-0 group-hover:opacity-100 transition">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </article>
             ))}
@@ -354,7 +373,7 @@ function Index() {
       <footer className="border-t border-border bg-cream/40">
         <div className="mx-auto max-w-6xl px-4 py-10 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground font-display">s</span>
+            <img src={logo} alt="Sunnyridge Dental" className="h-10 w-auto" />
             <div className="leading-tight">
               <div className="text-sm font-display">Sunnyridge Dental</div>
               <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Dr S Lutchman & Associates</div>

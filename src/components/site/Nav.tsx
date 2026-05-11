@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import logo from "@/assets/logo.png";
 
 const links = [
   { href: "#services", label: "Services" },
@@ -29,9 +30,7 @@ export function Nav() {
           }`}
         >
           <a href="#top" className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground font-display text-lg">
-              s
-            </span>
+            <img src={logo} alt="Sunnyridge Dental" className="h-10 w-auto" />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="font-display text-base text-foreground">Sunnyridge Dental</span>
               <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
