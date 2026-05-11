@@ -1,16 +1,35 @@
-## Goal
-Make the Sunnyridge Dental logo blend cleanly into the navigation bar by removing its cream background, so it sits seamlessly on both the transparent (top of page) and glassmorphism (scrolled) nav states.
+## Palette refinement — warmer, more human
 
-## Approach
-The current `src/assets/logo.png` is a flat mockup with a baked-in cream rectangle background. That solid block looks like a sticker on the nav. We'll generate a transparent PNG version of the same logo (tooth mark + family icon + "Sunnyridge Dental / Dr S Lutchman & Associates / Caring for Germiston smiles since 2003" wordmark) and swap it into the header.
+Scope: tokens in `src/styles.css` only. No layout, no component, no copy changes. All semantic tokens stay the same names, so every existing `bg-primary`, `text-gold`, `bg-cream`, etc. picks up the new tones automatically.
 
-## Steps
-1. Generate `src/assets/logo-transparent.png` using the image tool with `transparent_background: true`, matching the existing logo's composition and the project's deep-teal + warm-gold palette.
-2. Update `src/components/site/Nav.tsx` to import and render `logo-transparent.png` instead of `logo.png`.
-3. Slightly increase the rendered height (e.g. `h-11` → `h-12`) since the transparent version no longer has internal padding, so it can breathe more.
-4. Leave the footer using the original `logo.png` (it sits on a cream footer panel, so the baked background is fine there) — unless you'd prefer the transparent one there too.
+### New palette direction
 
-## Out of scope
-- No layout, color, or copy changes.
-- No changes to the footer (unless requested).
-- No changes to the favicon or social share images.
+| Token | Now (cool) | New (warm) | Used for |
+|---|---|---|---|
+| `--primary` | muted deep blue | warm charcoal with a faint teal lean | Nav buttons, headlines accent, testimonial section bg |
+| `--foreground` | cool near-black | warm off-black (slight brown undertone) | Body text |
+| `--background` | very pale cream | slightly deeper warm off-white | Page background |
+| `--cream` | light cream | soft sand / oat | Section backgrounds (about, trust strip, footer) |
+| `--accent` | cool pale blue | warm taupe / soft clay | Service icon chips, contact cards |
+| `--gold` | warm gold | slightly more muted, honeyed gold | Stars, hairline accents, eyebrow labels |
+| `--muted-foreground` | cool grey | warm stone grey | Secondary text |
+| `--border` | cool light | warm sand border | Cards, dividers |
+
+### Atmosphere goals
+- Backgrounds read as "morning light on warm plaster," not "white paper."
+- Dark sections (testimonials) feel like warm clay/charcoal — inviting, not corporate.
+- Gold becomes a quiet honey tone rather than a bright metallic — used as a whisper, not a shout.
+- Every neutral pulled toward the warm side of the oklch hue wheel (hue ~60–80 for neutrals, ~180–200 for the deep tone instead of 235).
+
+### Implementation
+1. Update `:root` token values in `src/styles.css` (oklch only).
+2. Lightly retune the hero radial-gradient backdrop in `src/routes/index.tsx` so the warm/cool blobs become two warm tones (sand + soft clay) — single inline style, no structural change.
+3. Visually QA at the current viewport (948px) and on mobile to confirm contrast on:
+   - Primary buttons
+   - Dark testimonial section
+   - Glass nav over cream background
+   - Footer + trust strip on the new sand background
+
+### Out of scope
+- No layout, spacing, typography, copy, image, or component changes.
+- No new sections or tokens beyond what's listed.
