@@ -340,13 +340,18 @@ function Index() {
                   <div className="font-medium">+27 81 456 1234</div>
                 </div>
               </a>
-              <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=61+Pitts+Ave,+Sunnyridge,+Germiston,+1420"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-primary/40 transition"
+              >
                 <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent text-primary"><MapPin className="h-4 w-4" /></div>
                 <div>
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">Find us</div>
-                  <div className="font-medium">Sunnyridge, Germiston, South Africa</div>
+                  <div className="font-medium">61 Pitts Ave, Sunnyridge, Germiston, 1420</div>
                 </div>
-              </div>
+              </a>
             </div>
 
             <div className="mt-8 flex items-center gap-3">
@@ -360,7 +365,7 @@ function Index() {
             <div className="rounded-3xl overflow-hidden border border-border shadow-soft h-[460px]">
               <iframe
                 title="Sunnyridge Dental location"
-                src="https://www.google.com/maps?q=Sunnyridge+Germiston+South+Africa&output=embed"
+                src="https://www.google.com/maps?q=61+Pitts+Ave,+Sunnyridge,+Germiston,+1420&output=embed"
                 className="w-full h-full"
                 loading="lazy"
               />
