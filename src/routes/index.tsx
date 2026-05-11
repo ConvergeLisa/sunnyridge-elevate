@@ -373,7 +373,7 @@ function Index() {
       <footer className="border-t border-border bg-cream/40">
         <div className="mx-auto max-w-6xl px-4 py-10 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground font-display">s</span>
+            <img src={logo} alt="Sunnyridge Dental" className="h-10 w-auto" />
             <div className="leading-tight">
               <div className="text-sm font-display">Sunnyridge Dental</div>
               <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Dr S Lutchman & Associates</div>
