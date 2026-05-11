@@ -1,15 +1,11 @@
 {
   "buildCommand": "node scripts/build-vercel.mjs",
   "installCommand": "npm install --no-audit --no-fund",
-  "outputDirectory": "vercel-dist",
-  "routes": [
+  "outputDirectory": "vercel-dist/client",
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
